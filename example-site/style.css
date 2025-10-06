@@ -86,8 +86,7 @@ body {
 .logo-icon {
     width: 28px;
     height: 28px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 6px;
+    object-fit: contain;
 }
 
 .nav-links {
@@ -538,9 +537,6 @@ code {
 }
 
 /* Dark theme specific adjustments */
-[data-theme="dark"] .logo-icon {
-    background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
-}
 
 [data-theme="dark"] .sidebar-item:hover {
     background: rgba(255, 255, 255, 0.05);
