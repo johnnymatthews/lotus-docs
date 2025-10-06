@@ -3,723 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation - Hextra Starter Template</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #0969da;
-            --text-primary: #1c2128;
-            --text-secondary: #57606a;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f6f8fa;
-            --border-color: #d1d9e0;
-            --sidebar-width: 260px;
-            --header-height: 60px;
-            --code-bg: #f6f8fa;
-            --code-border: #d1d9e0;
-        }
-
-        /* Dark theme */
-        [data-theme="dark"] {
-            --primary-color: #58a6ff;
-            --text-primary: #c9d1d9;
-            --text-secondary: #8b949e;
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --border-color: #30363d;
-            --code-bg: #161b22;
-            --code-border: #30363d;
-        }
-
-        /* Smooth transitions for theme switching */
-        body {
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        * {
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-        }
-
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--header-height);
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-        }
-
-        .header-content {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .logo-icon {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 6px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-link.active {
-            color: var(--primary-color);
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-box {
-            padding: 6px 12px 6px 12px;
-            padding-right: 50px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 14px;
-            width: 200px;
-            background: var(--bg-secondary);
-        }
-
-        .search-shortcut {
-            position: absolute;
-            right: 8px;
-            font-size: 11px;
-            color: var(--text-secondary);
-            background: var(--bg-primary);
-            border-radius: 4px;
-            padding: 2px 6px;
-            pointer-events: none;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        .theme-toggle {
-            padding: 6px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--bg-primary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .github-link {
-            display: flex;
-            align-items: center;
-            padding: 6px;
-        }
-
-        .language-selector {
-            position: relative;
-            display: inline-block;
-        }
-
-        .language-button {
-            padding: 6px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--bg-primary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            color: var(--text-primary);
-        }
-
-        .language-button:hover {
-            background: var(--bg-secondary);
-        }
-
-        .language-dropdown {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            min-width: 140px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            display: none;
-            z-index: 1000;
-        }
-
-        .language-dropdown.open {
-            display: block;
-        }
-
-        .language-option {
-            display: block;
-            padding: 8px 12px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background 0.2s;
-            border: none;
-            background: transparent;
-            width: 100%;
-            text-align: left;
-        }
-
-        .language-option:first-child {
-            border-radius: 6px 6px 0 0;
-        }
-
-        .language-option:last-child {
-            border-radius: 0 0 6px 6px;
-        }
-
-        .language-option:hover {
-            background: var(--bg-secondary);
-        }
-
-        .language-option.active {
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        /* Layout Container */
-        .container {
-            display: flex;
-            margin-top: var(--header-height);
-            min-height: calc(100vh - var(--header-height));
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: var(--header-height);
-            bottom: 0;
-            width: var(--sidebar-width);
-            background: var(--bg-secondary);
-            border-right: 1px solid var(--border-color);
-            overflow-y: auto;
-            padding: 24px 0 0 0;
-            display: flex;
-            flex-direction: column;
-            z-index: 50;
-        }
-
-        .sidebar-section {
-            margin-bottom: 24px;
-            padding: 0 24px;
-        }
-
-        .sidebar-main-nav {
-            display: none;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        @media (max-width: 768px) {
-            .sidebar-main-nav {
-                display: block;
-            }
-        }
-
-        .sidebar-title {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        .sidebar-item {
-            display: block;
-            padding: 6px 12px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            margin-bottom: 2px;
-            transition: all 0.2s;
-        }
-
-        .sidebar-item:hover {
-            background: rgba(0, 0, 0, 0.05);
-            color: var(--text-primary);
-        }
-
-        .sidebar-item.active {
-            background: var(--bg-primary);
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        .sidebar-item.has-children {
-            position: relative;
-            padding-left: 24px;
-        }
-
-        .sidebar-item.has-children::before {
-            content: '▸';
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: transform 0.2s;
-            font-size: 16px;
-        }
-
-        .sidebar-item.has-children.expanded::before {
-            transform: translateY(-50%) rotate(90deg);
-        }
-
-        .sidebar-children {
-            margin-left: 12px;
-            display: none;
-        }
-
-        .sidebar-children.expanded {
-            display: block;
-        }
-
-        .sidebar-social {
-            padding: 24px;
-            border-top: 1px solid var(--border-color);
-            margin-top: auto;
-        }
-
-        .sidebar-social-title {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 6px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border-color: var(--primary-color);
-        }
-
-        /* Main Content */
-        .main {
-            margin-left: var(--sidebar-width);
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            padding: 48px 248px 48px 24px; /* Add space for TOC (200px + 48px spacing) */
-        }
-
-        .content {
-            max-width: 768px;
-            width: 100%;
-        }
-
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 32px;
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .breadcrumb a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: var(--primary-color);
-        }
-
-        .breadcrumb-separator {
-            color: var(--text-secondary);
-        }
-
-        h1 {
-            font-size: 36px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-top: 48px;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-top: 32px;
-            margin-bottom: 12px;
-        }
-
-        p {
-            margin-bottom: 16px;
-            line-height: 1.7;
-            color: var(--text-primary);
-        }
-
-        .lead {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-        }
-
-        /* Code Block */
-        .code-block {
-            position: relative;
-            background: var(--code-bg);
-            border: 1px solid var(--code-border);
-            border-radius: 8px;
-            margin: 24px 0;
-            overflow: hidden;
-        }
-
-        .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 16px;
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--code-border);
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .code-lang {
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .copy-button {
-            padding: 4px 8px;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            color: var(--text-secondary);
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .copy-button:hover {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-        }
-
-        pre {
-            padding: 16px;
-            overflow-x: auto;
-            margin: 0;
-        }
-
-        code {
-            font-family: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .code-block code {
-            display: block;
-            color: var(--text-primary);
-        }
-
-        /* Dark theme specific adjustments */
-        [data-theme="dark"] .logo-icon {
-            background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
-        }
-
-        [data-theme="dark"] .sidebar-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        [data-theme="dark"] .sidebar-item.active {
-            background: #21262d;
-        }
-
-        [data-theme="dark"] .search-box {
-            background: #0d1117;
-            color: var(--text-primary);
-        }
-
-        [data-theme="dark"] .search-box::placeholder {
-            color: var(--text-secondary);
-        }
-
-        [data-theme="dark"] .theme-toggle:hover,
-        [data-theme="dark"] .copy-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-
-        [data-theme="dark"] .language-dropdown {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        [data-theme="dark"] .theme-toggle svg,
-        [data-theme="dark"] .language-button svg,
-        [data-theme="dark"] .mobile-menu-toggle svg {
-            stroke: var(--text-primary);
-        }
-
-        /* Syntax Highlighting */
-        .keyword {
-            color: #d73a49;
-            font-weight: 500;
-        }
-
-        [data-theme="dark"] .keyword {
-            color: #ff7b72;
-        }
-
-        .string {
-            color: #032f62;
-        }
-
-        [data-theme="dark"] .string {
-            color: #a5d6ff;
-        }
-
-        .function {
-            color: #6f42c1;
-        }
-
-        [data-theme="dark"] .function {
-            color: #d2a8ff;
-        }
-
-        .comment {
-            color: #6a737d;
-            font-style: italic;
-        }
-
-        [data-theme="dark"] .comment {
-            color: #8b949e;
-        }
-
-        /* Table of Contents (Right Sidebar) */
-        .toc {
-            position: fixed;
-            right: 24px;
-            top: calc(var(--header-height) + 48px);
-            width: 200px;
-            font-size: 14px;
-        }
-
-        .toc-title {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-
-        .toc-item {
-            display: block;
-            padding: 4px 0;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-            border-left: 2px solid transparent;
-            padding-left: 12px;
-            margin-left: -2px;
-        }
-
-        .toc-item:hover {
-            color: var(--text-primary);
-        }
-
-        .toc-item.active {
-            color: var(--primary-color);
-            border-left-color: var(--primary-color);
-        }
-
-        .toc-item.level-2 {
-            padding-left: 24px;
-        }
-
-        .toc-item.level-3 {
-            padding-left: 36px;
-        }
-
-        /* Navigation Footer */
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 64px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .nav-footer-link {
-            display: flex;
-            flex-direction: column;
-            padding: 16px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: transform 0.2s;
-            max-width: 45%;
-        }
-
-        .nav-footer-link:hover {
-            transform: translateY(-2px);
-        }
-
-        .nav-footer-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-        }
-
-        .nav-footer-title {
-            font-size: 16px;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            padding: 6px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Responsive */
-        @media (max-width: 1280px) {
-            .toc {
-                display: none;
-            }
-
-            .main {
-                padding: 48px 24px; /* Reset padding when TOC is hidden */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .logo {
-                display: none;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-
-            .main {
-                margin-left: 0;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .search-box {
-                width: 120px;
-            }
-
-            .search-shortcut {
-                display: none;
-            }
-        }
-    </style>
+    <title>Lotus Docs</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
@@ -733,12 +18,15 @@
                 </button>
                 <a href="/" class="logo">
                     <div class="logo-icon"></div>
-                    <span>Hextra</span>
+                    <span>Lotus Docs</span>
                 </a>
                 <nav class="nav-links">
-                    <a href="/docs" class="nav-link active">Documentation</a>
+                    <a href="/lotus" class="nav-link active">Lotus</a>
+                    <a href="/storage-providers" class="nav-link">Storage Providers</a>
+                    <a href="/tutorials" class="nav-link">Tutorials</a>
+                    <a href="/reference" class="nav-link">Reference</a>
+                    <a href="/kb" class="nav-link">Knowledge Base</a>
                     <a href="/blog" class="nav-link">Blog</a>
-                    <a href="/about" class="nav-link">About</a>
                 </nav>
             </div>
             <div class="header-actions">
@@ -784,35 +72,41 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-section sidebar-main-nav">
-                <a href="/docs" class="sidebar-item active">Documentation</a>
+                <a href="/lotus" class="sidebar-item active">Lotus</a>
+                <a href="/storage-providers" class="sidebar-item">Storage Providers</a>
+                <a href="/tutorials" class="sidebar-item">Tutorials</a>
+                <a href="/reference" class="sidebar-item">Reference</a>
+                <a href="/kb" class="sidebar-item">Knowledge Base</a>
                 <a href="/blog" class="sidebar-item">Blog</a>
-                <a href="/about" class="sidebar-item">About</a>
             </div>
             <div class="sidebar-section">
-                <div class="sidebar-title">Getting Started</div>
-                <a href="#" class="sidebar-item">Introduction</a>
-                <a href="#" class="sidebar-item">Installation</a>
-                <a href="#" class="sidebar-item">Quick Start</a>
+                <div class="sidebar-title">Get started</div>
+                <a href="#" class="sidebar-item active">What is Lotus</a>
+                <a href="#" class="sidebar-item">Networks</a>
+                <a href="#" class="sidebar-item">Node types</a>
             </div>
             <div class="sidebar-section">
-                <div class="sidebar-title">Guide</div>
-                <a href="#" class="sidebar-item active">Documentation</a>
-                <a href="#" class="sidebar-item has-children" onclick="toggleChildren(this)">
-                    Components
-                </a>
-                <div class="sidebar-children">
-                    <a href="#" class="sidebar-item">Buttons</a>
-                    <a href="#" class="sidebar-item">Cards</a>
-                    <a href="#" class="sidebar-item">Forms</a>
-                </div>
-                <a href="#" class="sidebar-item">Markdown</a>
-                <a href="#" class="sidebar-item">Configuration</a>
+                <div class="sidebar-title">Setup</div>
+                <a href="#" class="sidebar-item">Prerequisites</a>
+                <a href="#" class="sidebar-item">Lotus on Linux</a>
+                <a href="#" class="sidebar-item">MacOS</a>
+                <a href="#" class="sidebar-item">Start Lotus</a>
             </div>
             <div class="sidebar-section">
-                <div class="sidebar-title">Advanced</div>
-                <a href="#" class="sidebar-item">Customization</a>
-                <a href="#" class="sidebar-item">Deployment</a>
-                <a href="#" class="sidebar-item">Performance</a>
+                <div class="sidebar-title">Manage</div>
+                <a href="#" class="sidebar-item">Manage FIL</a>
+                <a href="#" class="sidebar-item">Using Ledger</a>
+                <a href="#" class="sidebar-item">Multisig</a>
+                <a href="#" class="sidebar-item">Chain management</a>
+                <a href="#" class="sidebar-item">Message pool</a>
+                <a href="#" class="sidebar-item">Switch networks</a>
+                <a href="#" class="sidebar-item">Backup and restore</a>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Developers</div>
+                <a href="#" class="sidebar-item">Devnet - Local network</a>
+                <a href="#" class="sidebar-item">Glif nodes</a>
+                <a href="#" class="sidebar-item">Contribute</a>
             </div>
             <div class="sidebar-social">
                 <div class="sidebar-social-title">Community</div>
@@ -843,65 +137,152 @@
                 <nav class="breadcrumb">
                     <a href="/">Home</a>
                     <span class="breadcrumb-separator">/</span>
-                    <a href="/docs">Docs</a>
+                    <a href="/lotus">Lotus</a>
                     <span class="breadcrumb-separator">/</span>
-                    <span>Documentation</span>
+                    <span>What is Lotus</span>
                 </nav>
 
                 <!-- Page Title -->
-                <h1>Documentation</h1>
-                <p class="lead">This is a demo of the theme's documentation layout.</p>
+                <h1>What is Lotus</h1>
+                <p class="lead">The surface-level answer to the question 'what is Lotus' often leaves people with more questions than they originally had. This page attempts to explain what Lotus is, without using any industry buzzwords or complicated jargon.</p>
 
                 <!-- Content -->
-                <h2 id="hello-world">Hello, World!</h2>
-                <p>Here's a simple example of a Go program that prints "Hello, World!" to demonstrate the code highlighting features of this theme.</p>
+                <p>This sounds like a simple question; what is Lotus? And the surface-level answer is:</p>
+
+                <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 16px; margin: 24px 0; color: var(--text-secondary);">
+                    <p style="margin: 0;">Lotus is the reference node implementation for the Filecoin network.</p>
+                </blockquote>
+
+                <p>If you understood all that, great! You can start diving into the rest of the documentation. However, if that sentence left you with more questions, then fear not! We're going to cover everything you need to know <em>without</em> assuming you know anything about crypto, blockchain, web3. By the end of this page you should understand each word in that surface-level answer.</p>
+
+                <h2 id="the-filecoin-network">The Filecoin network</h2>
+                <p>Let's start at the end.</p>
+
+                <h3 id="network">Network</h3>
+                <p>A <strong>network</strong> is a group of computers that talk to each other and exchange information. The internet is the biggest network in the world, and you're using it right now. But a network can also be very small, all you need is at least two computers that can communicate with each other.</p>
+
+                <h3 id="filecoin">Filecoin</h3>
+                <p><strong>Filecoin</strong> is a protocol. That means that it's a collection of rules and processes that computers need to follow to be part of the network. If a computer does not follow the rules, then they are ignored by the rest of the computers on the network.</p>
+
+                <p>You might have heard of HTTP before; it's the thing right at the start of a website link:</p>
 
                 <!-- Code Block -->
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-lang">go</span>
+                        <div class="code-tabs">
+                            <button class="code-tab active" onclick="switchTab(this, 'plaintext')">Plaintext</button>
+                        </div>
                         <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
-                    <pre><code><span class="keyword">package</span> main
+                    <div class="code-content active" data-lang="plaintext">
+                        <pre><code>http://example.com</code></pre>
+                    </div>
+                </div>
+
+                <p>HTTP is a set of rules that computers need to follow so that they can share websites with each other. If a computer doesn't know what HTTP is then it won't know what to do when you ask it to go to a website.</p>
+
+                <p>The Filecoin protocol lets users store data on any of the computers in the network. Once the data has been stored, users can retrieve the data from the computers on the network. That data can be anything; pictures, music, videos, research data, encrypted archives, anything! If it can be stored digitally then it can be stored using Filecoin.</p>
+
+                <p>So let's review. <em>The Filecoin network</em> is:</p>
+                <ul style="margin-left: 20px; margin-bottom: 16px;">
+                    <li style="margin-bottom: 8px;">A group of computers that are all following the same set of rules to allow users to store pretty much anything on the computers</li>
+                </ul>
+
+                <h2 id="node-implementation">A reference node implementation</h2>
+                <p>Again, let's start at the end.</p>
+
+                <h3 id="implementation">Implementation</h3>
+                <p>An <strong>implementation</strong> is <em>one way</em> to do <em>something</em>. Take this table from Ikea as an example. It's called Ingo, because Ikea likes to give their products fun names. Ingo is not the only table in the world; there are many more tables that exist. However, Ingo serves the primary functions of a table: it's flat, has legs to keep the surface off the floor, and you can put things on top of it. It's one implementation, or application, of the table idea.</p>
+
+                <ul style="margin-left: 20px; margin-bottom: 16px;">
+                    <li style="margin-bottom: 8px;"><em>Ingo</em> is an <em>object</em> that you can use as a <em>table</em>.</li>
+                    <li style="margin-bottom: 8px;"><em>Lotus</em> is an <em>application</em> that a computer can use to do <em>Filecoin stuff</em>.</li>
+                </ul>
+
+                <h3 id="node">Node</h3>
+                <p>A <strong>node</strong> is a computer that can talk to other computers on a network. In your home network there's probably a computer, a TV, and maybe a printer.</p>
+
+                <p>Each node on your home network has programs that tell it how to talk to the other nodes on the network. Without these programs, the nodes wouldn't be able to understand each other, and would be pretty useless.</p>
+
+                <p>In the case of Lotus, a <em>Lotus node</em> is a computer on a network that is running the Lotus application.</p>
+
+                <h3 id="reference">Reference</h3>
+                <p>Other computers refer to this node for how to talk to other computers.</p>
+
+                <p>So let's review. A <em>node implementation</em> is:</p>
+                <ul style="margin-left: 20px; margin-bottom: 16px;">
+                    <li style="margin-bottom: 8px;">An application that tells computers how to talk to other computers on the Filecoin network</li>
+                </ul>
+
+                <h2 id="in-summary">In summary</h2>
+                <p>Hopefully that all made sense, so let's put all this together.</p>
+
+                <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 16px; margin: 24px 0; color: var(--text-secondary);">
+                    <p style="margin: 0;">Lotus is the reference node implementation for the Filecoin network.</p>
+                </blockquote>
+
+                <p>To translate, Lotus is:</p>
+                <ul style="margin-left: 20px; margin-bottom: 16px;">
+                    <li style="margin-bottom: 8px;">An application that tells computers how to talk to other computers that are all following the same set of rules to allow users to store pretty much anything on the computers</li>
+                </ul>
+
+                <h2 id="hello-world">Code Example</h2>
+                <p>Here's a simple example of a program that prints "Hello, World!" in multiple languages to demonstrate the code tab features of this theme.</p>
+
+                <!-- Code Block -->
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-tabs">
+                            <button class="code-tab active" onclick="switchTab(this, 'go')">Go</button>
+                            <button class="code-tab" onclick="switchTab(this, 'javascript')">JavaScript</button>
+                            <button class="code-tab" onclick="switchTab(this, 'python')">Python</button>
+                            <button class="code-tab" onclick="switchTab(this, 'rust')">Rust</button>
+                        </div>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <div class="code-content active" data-lang="go">
+                        <pre><code><span class="keyword">package</span> main
 
 <span class="keyword">import</span> <span class="string">"fmt"</span>
 
 <span class="keyword">func</span> <span class="function">main</span>() {
     fmt.<span class="function">Println</span>(<span class="string">"Hello, World!"</span>)
 }</code></pre>
+                    </div>
+                    <div class="code-content" data-lang="javascript">
+                        <pre><code><span class="function">console</span>.<span class="function">log</span>(<span class="string">"Hello, World!"</span>);</code></pre>
+                    </div>
+                    <div class="code-content" data-lang="python">
+                        <pre><code><span class="function">print</span>(<span class="string">"Hello, World!"</span>)</code></pre>
+                    </div>
+                    <div class="code-content" data-lang="rust">
+                        <pre><code><span class="keyword">fn</span> <span class="function">main</span>() {
+    <span class="function">println!</span>(<span class="string">"Hello, World!"</span>);
+}</code></pre>
+                    </div>
                 </div>
 
-                <h2 id="features">Features</h2>
-                <p>This documentation template includes several key features that make it ideal for technical documentation:</p>
-                
-                <h3 id="syntax-highlighting">Syntax Highlighting</h3>
-                <p>The template includes built-in syntax highlighting for various programming languages, making code examples clear and easy to read.</p>
-                
-                <h3 id="responsive-design">Responsive Design</h3>
-                <p>The layout automatically adapts to different screen sizes, ensuring a great reading experience on both desktop and mobile devices.</p>
-                
-                <h3 id="navigation">Navigation</h3>
-                <p>Multiple navigation options are provided including a header navigation bar, sidebar menu, and table of contents for easy access to different sections.</p>
+                <h2 id="why-filecoin">Why Filecoin</h2>
+                <p>This page should have cleared things up regarding what Lotus is. But you may still have questions about Filecoin itself, like:</p>
 
-                <h2 id="getting-started">Getting Started</h2>
-                <p>To use this template with Hugo, you'll need to break it down into the appropriate template files and partials. The main components include:</p>
                 <ul style="margin-left: 20px; margin-bottom: 16px;">
-                    <li style="margin-bottom: 8px;">Header template for the top navigation</li>
-                    <li style="margin-bottom: 8px;">Sidebar partial for the documentation navigation</li>
-                    <li style="margin-bottom: 8px;">Main content layout</li>
-                    <li style="margin-bottom: 8px;">Table of contents partial</li>
-                    <li style="margin-bottom: 8px;">Footer navigation for previous/next pages</li>
+                    <li style="margin-bottom: 8px;">Why do we need Filecoin?</li>
+                    <li style="margin-bottom: 8px;">What's wrong with the normal way of storing things?</li>
+                    <li style="margin-bottom: 8px;">How can I store my stuff on Filecoin?</li>
+                    <li style="margin-bottom: 8px;">How much does it cost to store things on Filecoin?</li>
                 </ul>
+
+                <p>To get the answers to these questions, head on over to the <a href="https://docs.filecoin.io" style="color: var(--primary-color); text-decoration: none;">Filecoin documentation website</a>. This website is specific to Lotus documentation only.</p>
 
                 <!-- Navigation Footer -->
                 <nav class="nav-footer">
                     <a href="#" class="nav-footer-link">
                         <span class="nav-footer-label">← Previous</span>
-                        <span class="nav-footer-title">Quick Start</span>
+                        <span class="nav-footer-title">Devnet - Local network</span>
                     </a>
                     <a href="#" class="nav-footer-link" style="text-align: right;">
                         <span class="nav-footer-label">Next →</span>
-                        <span class="nav-footer-title">Components</span>
+                        <span class="nav-footer-title">Networks</span>
                     </a>
                 </nav>
             </article>
@@ -909,173 +290,19 @@
             <!-- Table of Contents -->
             <aside class="toc">
                 <div class="toc-title">On this page</div>
-                <a href="#hello-world" class="toc-item active">Hello, World!</a>
-                <a href="#features" class="toc-item">Features</a>
-                <a href="#syntax-highlighting" class="toc-item level-2">Syntax Highlighting</a>
-                <a href="#responsive-design" class="toc-item level-2">Responsive Design</a>
-                <a href="#navigation" class="toc-item level-2">Navigation</a>
-                <a href="#getting-started" class="toc-item">Getting Started</a>
+                <a href="#the-filecoin-network" class="toc-item active">The Filecoin network</a>
+                <a href="#network" class="toc-item level-2">Network</a>
+                <a href="#filecoin" class="toc-item level-2">Filecoin</a>
+                <a href="#node-implementation" class="toc-item">A reference node implementation</a>
+                <a href="#implementation" class="toc-item level-2">Implementation</a>
+                <a href="#node" class="toc-item level-2">Node</a>
+                <a href="#reference" class="toc-item level-2">Reference</a>
+                <a href="#in-summary" class="toc-item">In summary</a>
+                <a href="#why-filecoin" class="toc-item">Why Filecoin</a>
             </aside>
         </main>
     </div>
 
-    <script>
-        // Initialize theme
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            updateThemeIcon(savedTheme);
-        }
-
-        // Toggle theme
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        }
-
-        // Update theme icon
-        function updateThemeIcon(theme) {
-            const sunIcon = document.querySelector('.sun-icon');
-            const moonIcon = document.querySelector('.moon-icon');
-            
-            if (theme === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-            } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-            }
-        }
-
-        // Toggle mobile sidebar
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
-        }
-
-        // Toggle sidebar children
-        function toggleChildren(element) {
-            element.classList.toggle('expanded');
-            const children = element.nextElementSibling;
-            if (children && children.classList.contains('sidebar-children')) {
-                children.classList.toggle('expanded');
-            }
-        }
-
-        // Copy code to clipboard
-        function copyCode(button) {
-            const codeBlock = button.closest('.code-block');
-            const code = codeBlock.querySelector('code').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                setTimeout(() => {
-                    button.textContent = originalText;
-                }, 2000);
-            });
-        }
-
-        // Highlight active TOC item on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('h2[id], h3[id]');
-            const tocItems = document.querySelectorAll('.toc-item');
-            
-            let current = '';
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            tocItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === '#' + current) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Toggle language dropdown
-        function toggleLanguageDropdown() {
-            const dropdown = document.getElementById('language-dropdown');
-            dropdown.classList.toggle('open');
-        }
-
-        // Set language
-        function setLanguage(code, name) {
-            // Update the current language display
-            document.getElementById('current-language').textContent = code;
-
-            // Update active state
-            const options = document.querySelectorAll('.language-option');
-            options.forEach(option => {
-                option.classList.remove('active');
-                if (option.textContent === name) {
-                    option.classList.add('active');
-                }
-            });
-
-            // Close dropdown
-            document.getElementById('language-dropdown').classList.remove('open');
-
-            // Store preference
-            localStorage.setItem('language', code);
-
-            // In a real implementation, you would redirect to the translated page
-            // or load translated content here
-            console.log('Language changed to:', code);
-        }
-
-        // Close language dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            const languageSelector = document.querySelector('.language-selector');
-            const dropdown = document.getElementById('language-dropdown');
-
-            if (languageSelector && !languageSelector.contains(event.target)) {
-                dropdown.classList.remove('open');
-            }
-        });
-
-        // Initialize language on page load
-        function initLanguage() {
-            const savedLanguage = localStorage.getItem('language');
-            if (savedLanguage) {
-                document.getElementById('current-language').textContent = savedLanguage;
-            }
-        }
-
-        // Set correct keyboard shortcut hint based on OS
-        function initSearchShortcut() {
-            const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-            const shortcutHint = document.getElementById('search-shortcut');
-            if (shortcutHint) {
-                shortcutHint.textContent = isMac ? '⌘K' : 'Ctrl+K';
-            }
-        }
-
-        // Keyboard shortcut for search (CMD+K or CTRL+K)
-        document.addEventListener('keydown', function(event) {
-            // Check for CMD+K (Mac) or CTRL+K (Windows/Linux)
-            if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
-                event.preventDefault();
-                const searchBox = document.getElementById('search-box');
-                searchBox.focus();
-            }
-        });
-
-        // Initialize theme on page load
-        initTheme();
-
-        // Initialize language on page load
-        initLanguage();
-
-        // Initialize search shortcut hint
-        initSearchShortcut();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
