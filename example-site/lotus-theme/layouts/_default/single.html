@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+
+<!-- Page Title -->
+<h1>{{ .Title }}</h1>
+{{ with .Params.lead }}
+<p class="lead">{{ . }}</p>
+{{ end }}
+
+<!-- Content -->
+{{ .Content }}
+
+<!-- Navigation Footer -->
+{{ partial "page-navigation.html" . }}
+{{ end }}

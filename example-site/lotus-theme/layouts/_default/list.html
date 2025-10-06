@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+
+<!-- Page Title -->
+<h1>{{ .Title }}</h1>
+{{ with .Params.lead }}
+<p class="lead">{{ . }}</p>
+{{ end }}
+
+<!-- Content -->
+{{ .Content }}
+
+<!-- List of pages -->
+{{ if .Pages }}
+<div class="page-list">
+    {{ range .Pages }}
+    <article class="page-item">
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        {{ with .Params.lead }}
+        <p>{{ . }}</p>
+        {{ else }}
+        <p>{{ .Summary }}</p>
+        {{ end }}
+    </article>
+    {{ end }}
+</div>
+{{ end }}
+{{ end }}

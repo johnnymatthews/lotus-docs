@@ -1,0 +1,12 @@
+name = "Lotus"
+license = "MIT"
+licenselink = "https://github.com/yourusername/lotus-theme/blob/main/LICENSE"
+description = "A modern documentation theme for Hugo, designed for the Lotus project"
+homepage = "https://github.com/yourusername/lotus-theme"
+tags = ["documentation", "technical", "modern", "responsive", "dark-mode"]
+features = ["documentation", "responsive", "dark mode", "syntax highlighting", "code tabs", "search", "multilingual"]
+min_version = "0.100.0"
+
+[author]
+  name = "Lotus Team"
+  homepage = "https://lotus.filecoin.io"

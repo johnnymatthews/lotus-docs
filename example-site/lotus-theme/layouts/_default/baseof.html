@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+
+    {{ if .Description }}
+    <meta name="description" content="{{ .Description }}">
+    {{ else if .Site.Params.description }}
+    <meta name="description" content="{{ .Site.Params.description }}">
+    {{ end }}
+
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ "favicon-96x96.png" | relURL }}">
+    <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+    <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}">
+
+    {{ block "head" . }}{{ end }}
+</head>
+<body class="{{ .Type }} {{ if .IsPage }}single{{ else }}list{{ end }}">
+    {{ partial "header.html" . }}
+
+    <div class="container">
+        {{ partial "sidebar.html" . }}
+
+        <main class="main">
+            <article class="content">
+                {{ block "main" . }}{{ end }}
+            </article>
+
+            {{ partial "toc.html" . }}
+        </main>
+    </div>
+
+    <script src="{{ "js/script.js" | relURL }}"></script>
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>

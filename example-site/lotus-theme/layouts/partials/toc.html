@@ -1,0 +1,9 @@
+<!-- Table of Contents -->
+{{ if .Params.toc | default true }}
+{{ if .TableOfContents }}
+<aside class="toc">
+    <div class="toc-title">On this page</div>
+    {{ .TableOfContents }}
+</aside>
+{{ end }}
+{{ end }}

@@ -1,0 +1,87 @@
+# Lotus Hugo Theme Structure
+
+lotus-theme/
+├── LICENSE                      # MIT License
+├── README.md                    # Theme documentation
+├── SETUP.md                     # Setup and usage guide
+├── theme.toml                   # Hugo theme metadata
+│
+├── archetypes/                  # Content templates
+│
+├── assets/                      # Source assets (for Hugo Pipes)
+│
+├── data/                        # Data files
+│
+├── i18n/                        # Internationalization files
+│
+├── layouts/                     # Hugo templates
+│   ├── _default/
+│   │   ├── baseof.html         # Base template (used by all pages)
+│   │   ├── single.html         # Single page template
+│   │   └── list.html           # List page template
+│   │
+│   ├── partials/
+│   │   ├── header.html         # Site header with nav
+│   │   ├── sidebar.html        # Documentation sidebar
+│   │   ├── toc.html            # Table of contents
+│   │   ├── breadcrumb.html     # Breadcrumb navigation
+│   │   └── page-navigation.html # Prev/Next page links
+│   │
+│   └── shortcodes/
+│       └── code-tabs.html      # Code tabs shortcode
+│
+├── static/                      # Static assets (served as-is)
+│   ├── css/
+│   │   └── style.css           # Main stylesheet
+│   ├── js/
+│   │   └── script.js           # JavaScript functionality
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── favicon-96x96.png
+│   ├── apple-touch-icon.png
+│   ├── android-chrome-192x192.png
+│   ├── android-chrome-512x512.png
+│   ├── favicon.ico
+│   └── site.webmanifest
+│
+└── exampleSite/                 # Example site for testing
+    ├── config.toml             # Example configuration
+    ├── content/                # Example content
+    │   ├── _index.md           # Homepage
+    │   └── lotus/
+    │       └── what-is-lotus.md
+    └── static/                 # Site-specific static files
+
+## Key Features
+
+1. **Responsive Design** - Mobile-first, works on all devices
+2. **Dark Mode** - Auto-detecting with manual toggle
+3. **Code Highlighting** - Syntax highlighting with tab support
+4. **Documentation-focused** - Sidebar navigation, TOC, breadcrumbs
+5. **Multilingual Ready** - i18n support built-in
+6. **Search** - Built-in search functionality
+7. **Customizable** - Easy to override templates and styles
+
+## Template Inheritance
+
+baseof.html (base)
+├── single.html (single pages)
+│   ├── header.html (partial)
+│   ├── sidebar.html (partial)
+│   ├── breadcrumb.html (partial)
+│   ├── toc.html (partial)
+│   └── page-navigation.html (partial)
+│
+└── list.html (section listings)
+    ├── header.html (partial)
+    ├── sidebar.html (partial)
+    └── breadcrumb.html (partial)
+
+## Menus
+
+The theme uses two main menu systems:
+
+1. **main** - Top navigation bar
+2. **docs** - Sidebar documentation menu (hierarchical)
+
+Configure in config.toml under [[menus.main]] and [[menus.docs]]

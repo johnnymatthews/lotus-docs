@@ -1,0 +1,177 @@
+baseURL = "https://example.com/"
+languageCode = "en-us"
+title = "Lotus Docs"
+# Theme is loaded from parent directory
+themesDir = "../../"
+theme = "lotus-theme"
+
+[params]
+  description = "Documentation for Lotus - the reference node implementation for the Filecoin network."
+
+  [params.social]
+    github = "https://github.com/filecoin-project/lotus"
+    twitter = "https://twitter.com/lotus_web3"
+    slack = "https://filecoin.io/slack"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# Main navigation menu
+[[menus.main]]
+  name = "Lotus"
+  url = "/lotus/"
+  weight = 10
+
+[[menus.main]]
+  name = "Storage Providers"
+  url = "/storage-providers/"
+  weight = 20
+
+[[menus.main]]
+  name = "Tutorials"
+  url = "/tutorials/"
+  weight = 30
+
+[[menus.main]]
+  name = "Reference"
+  url = "/reference/"
+  weight = 40
+
+[[menus.main]]
+  name = "Knowledge Base"
+  url = "/kb/"
+  weight = 50
+
+[[menus.main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 60
+
+# Documentation sidebar menu
+[[menus.docs]]
+  name = "Get started"
+  identifier = "get-started"
+  weight = 10
+
+[[menus.docs]]
+  name = "What is Lotus"
+  parent = "get-started"
+  url = "/lotus/what-is-lotus/"
+  weight = 11
+
+[[menus.docs]]
+  name = "Networks"
+  parent = "get-started"
+  url = "/lotus/networks/"
+  weight = 12
+
+[[menus.docs]]
+  name = "Node types"
+  parent = "get-started"
+  url = "/lotus/node-types/"
+  weight = 13
+
+[[menus.docs]]
+  name = "Setup"
+  identifier = "setup"
+  weight = 20
+
+[[menus.docs]]
+  name = "Prerequisites"
+  parent = "setup"
+  url = "/lotus/prerequisites/"
+  weight = 21
+
+[[menus.docs]]
+  name = "Lotus on Linux"
+  parent = "setup"
+  url = "/lotus/linux/"
+  weight = 22
+
+[[menus.docs]]
+  name = "MacOS"
+  parent = "setup"
+  url = "/lotus/macos/"
+  weight = 23
+
+[[menus.docs]]
+  name = "Start Lotus"
+  parent = "setup"
+  url = "/lotus/start-lotus/"
+  weight = 24
+
+[[menus.docs]]
+  name = "Manage"
+  identifier = "manage"
+  weight = 30
+
+[[menus.docs]]
+  name = "Manage FIL"
+  parent = "manage"
+  url = "/lotus/manage-fil/"
+  weight = 31
+
+[[menus.docs]]
+  name = "Using Ledger"
+  parent = "manage"
+  url = "/lotus/ledger/"
+  weight = 32
+
+[[menus.docs]]
+  name = "Multisig"
+  parent = "manage"
+  url = "/lotus/multisig/"
+  weight = 33
+
+[[menus.docs]]
+  name = "Chain management"
+  parent = "manage"
+  url = "/lotus/chain-management/"
+  weight = 34
+
+[[menus.docs]]
+  name = "Message pool"
+  parent = "manage"
+  url = "/lotus/message-pool/"
+  weight = 35
+
+[[menus.docs]]
+  name = "Switch networks"
+  parent = "manage"
+  url = "/lotus/switch-networks/"
+  weight = 36
+
+[[menus.docs]]
+  name = "Backup and restore"
+  parent = "manage"
+  url = "/lotus/backup-restore/"
+  weight = 37
+
+[[menus.docs]]
+  name = "Developers"
+  identifier = "developers"
+  weight = 40
+
+[[menus.docs]]
+  name = "Devnet - Local network"
+  parent = "developers"
+  url = "/lotus/devnet/"
+  weight = 41
+
+[[menus.docs]]
+  name = "Glif nodes"
+  parent = "developers"
+  url = "/lotus/glif-nodes/"
+  weight = 42
+
+[[menus.docs]]
+  name = "Contribute"
+  parent = "developers"
+  url = "/lotus/contribute/"
+  weight = 43

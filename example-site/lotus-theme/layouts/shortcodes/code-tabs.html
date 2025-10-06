@@ -1,0 +1,16 @@
+{{- $tabs := .Params }}
+<div class="code-block">
+    <div class="code-header">
+        <div class="code-tabs">
+            {{- range $index, $tab := $tabs }}
+            <button class="code-tab {{ if eq $index 0 }}active{{ end }}" onclick="switchTab(this, '{{ $tab.lang }}')">{{ $tab.name }}</button>
+            {{- end }}
+        </div>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+    {{- range $index, $tab := $tabs }}
+    <div class="code-content {{ if eq $index 0 }}active{{ end }}" data-lang="{{ $tab.lang }}">
+        <pre><code>{{ $tab.code | safeHTML }}</code></pre>
+    </div>
+    {{- end }}
+</div>
