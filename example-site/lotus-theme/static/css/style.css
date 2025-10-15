@@ -782,8 +782,17 @@ code {
         display: none;
     }
 
+    .header-actions {
+        flex: 1;
+    }
+
+    .search-container {
+        flex: 1;
+    }
+
     .search-box {
-        width: 120px;
+        width: 100%;
+        flex: 1;
     }
 
     .search-shortcut {
