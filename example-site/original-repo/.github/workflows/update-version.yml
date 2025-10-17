@@ -1,0 +1,93 @@
+name: Bump Lotus Version
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Get the latest release
+        id: get_release
+        run: |
+          REPO="filecoin-project/lotus"
+          RELEASES_TAGS=$(curl -s "https://api.github.com/repos/${REPO}/releases" | jq -r '.[] | select(.prerelease == false) | .tag_name')
+
+          get_latest_release() {
+            local TAG_PREFIX=$1
+            local RELEASES_TAGS_WITH_PREFIX=$(echo "$RELEASES_TAGS" | grep "${TAG_PREFIX}")
+
+            if [ -z "$RELEASES_TAGS_WITH_PREFIX" ]; then
+                exit 1
+            fi
+
+            local LATEST_RELEASE=$(echo "$RELEASES_TAGS_WITH_PREFIX" | sort -V | tail -n 1)
+            if [ -z "$LATEST_RELEASE" ]; then
+                exit 1
+            fi
+
+            echo "${LATEST_RELEASE#$TAG_PREFIX}"
+          }
+
+          latest_lotus=$(get_latest_release "v")
+          latest_miner=$(get_latest_release "miner/v")
+
+          echo "latest_lotus=$latest_lotus" >> $GITHUB_OUTPUT
+          echo "latest_miner=$latest_miner" >> $GITHUB_OUTPUT
+
+      - name: Get current Go version
+        id: get_go_version
+        run: |
+          REPO="filecoin-project/lotus"
+          LATEST_RELEASE=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | jq -r .tag_name)
+          # Changed from go.mod to GO_VERSION_MIN
+          GO_MOD_URL="https://raw.githubusercontent.com/${REPO}/${LATEST_RELEASE}/GO_VERSION_MIN"
+          
+          GO_VERSION=$(curl -s $GO_MOD_URL | awk 'NR==1 {print $1}')
+          if [ -z "$GO_VERSION" ]; then
+            echo "Error: Could not find Go version in GO_VERSION_MIN"
+            exit 1
+          fi
+          
+          echo "Found Go version: $GO_VERSION"
+          echo "current_go_version=$GO_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update version.json
+        run: |
+          jq --arg lotus "$LATEST_LOTUS" --arg miner "$LATEST_MINER" --arg go "$CURRENT_GO_VERSION" '.lotus = $lotus | .miner = $miner | .go = $go' data/version.json > data/version.tmp && mv data/version.tmp data/version.json
+        env:
+          LATEST_LOTUS: ${{ steps.get_release.outputs.latest_lotus }}
+          LATEST_MINER: ${{ steps.get_release.outputs.latest_miner }}
+          CURRENT_GO_VERSION: ${{ steps.get_go_version.outputs.current_go_version }}
+
+      - name: Check if changes exist
+        id: git_diff
+        run: |
+          git diff --exit-code || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.git_diff.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: bump-lotus-version
+          title: "Bump Lotus versions (node=${{ steps.get_release.outputs.latest_lotus }}, miner=${{ steps.get_release.outputs.latest_miner }}, go=${{ steps.get_go_version.outputs.current_go_version }})"
+          body: "This PR bumps the Lotus versions to node=${{ steps.get_release.outputs.latest_lotus }}, miner=${{ steps.get_release.outputs.latest_miner }}, and updates the Go version to ${{ steps.get_go_version.outputs.current_go_version }}."
+          commit-message: "Bump Lotus versions to node=${{ steps.get_release.outputs.latest_lotus }}, miner=${{ steps.get_release.outputs.latest_miner }}, go=${{ steps.get_go_version.outputs.current_go_version }}"
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          add-paths: |
+            data/version.json
+            
