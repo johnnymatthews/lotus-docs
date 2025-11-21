@@ -1,8 +1,5 @@
----
-title: "{{ replace .Name "-" " " | title }}"
-description: ""
-date: {{ .Date }}
-lastmod: {{ .Date }}
-draft: false
-images: []
----
++++
+date = '{{ .Date }}'
+draft = true
+title = '{{ replace .File.ContentBaseName "-" " " | title }}'
++++

@@ -1,1 +1,0 @@
-import 'flexsearch/dist/flexsearch.bundle.js'
