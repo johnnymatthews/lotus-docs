@@ -287,55 +287,219 @@ languageCode = "en-us"
 
 [[menus.storage-providers]]
   name = "Getting Started"
-  weight = 1
+  weight = 100
 
   [[menus.storage-providers]]
-  name = "Overview"
-  url = "/storage-providers/getting-started/"
+  name = "Start here"
+  url = "/storage-providers/getting-started/start-here"
   parent = "Getting Started"
-  weight = 1
+  weight = 101
+
+  [[menus.storage-providers]]
+  name = "Tasks"
+  url = "/storage-providers/tasks/"
+  parent = "Getting Started"
+  weight = 111
+
+  [[menus.storage-providers]]
+  name = "Economics"
+  url = "/storage-providers/economics/"
+  parent = "Getting Started"
+  weight = 121
+
+  [[menus.storage-providers]]
+  name = "Hardware requirements"
+  url = "/storage-providers/hardware-requirements/"
+  parent = "Getting Started"
+  weight = 131
+
+  [[menus.storage-providers]]
+  name = "Architectures"
+  url = "/storage-providers/architectures/"
+  parent = "Getting Started"
+  weight = 141
+
+[[menus.storage-providers]]
+  name = "Setup"
+  weight = 200
+
+  [[menus.storage-providers]]
+  name = "Prerequisites"
+  url = "/storage-providers/prerequisites/"
+  parent = "Setup"
+  weight = 201
+
+  [[menus.storage-providers]]
+  name = "Initialize"
+  url = "/storage-providers/initialize/"
+  parent = "Setup"
+  weight = 211
+
+  [[menus.storage-providers]]
+  name = "Configuration"
+  url = "/storage-providers/configuration/"
+  parent = "Setup"
+  weight = 221
+
+[[menus.storage-providers]]
+  name = "Operate"
+  weight = 300
+
+  [[menus.storage-providers]]
+  name = "Benchmarks"
+  url = "/storage-providers/operate/benchmarks/"
+  parent = "Operate"
+  weight = 301
+
+  [[menus.storage-providers]]
+  name = "Addresses"
+  url = "/storage-providers/operate/addresses/"
+  parent = "Operate"
+  weight = 311
+
+  [[menus.storage-providers]]
+  name = "Custom storage layout"
+  url = "/storage-providers/operate/custom-storage-layout/"
+  parent = "Operate"
+  weight = 321
+
+  [[menus.storage-providers]]
+  name = "Backup and restore"
+  url = "/storage-providers/operate/backup-and-restore/"
+  parent = "Operate"
+  weight = 331
+
+  [[menus.storage-providers]]
+  name = "Upgrades"
+  url = "/storage-providers/operate/upgrades/"
+  parent = "Operate"
+  weight = 341
+
+  [[menus.storage-providers]]
+  name = "Sector pledging"
+  url = "/storage-providers/operate/sector-pledging/"
+  parent = "Operate"
+  weight = 351
+
+  [[menus.storage-providers]]
+  name = "Snap-deals"
+  url = "/storage-providers/operate/snap-deals/"
+  parent = "Operate"
+  weight = 361
+
+  [[menus.storage-providers]]
+  name = "Chores"
+  url = "/storage-providers/operate/chores/"
+  parent = "Operate"
+  weight = 371
+
+  [[menus.storage-providers]]
+  name = "Maintenance"
+  url = "/storage-providers/operate/maintenance/"
+  parent = "Operate"
+  weight = 381
+
+  [[menus.storage-providers]]
+  name = "Louts-miner CLI"
+  url = "/storage-providers/operate/lotus-miner-cli/"
+  parent = "Operate"
+  weight = 391
+
 
 
 [[menus.tutorials]]
-  name = "Getting Started"
-  weight = 1
+  name = "Lotus"
+  weight = 100
 
   [[menus.tutorials]]
-  name = "Overview"
-  url = "/tutorials/getting-started/"
-  parent = "Getting Started"
-  weight = 1
+  name = "Building with Lotus API"
+  url = "/tutorials/lotus/building-with-lotus-api"
+  parent = "Lotus"
+  weight = 101
 
+  [[menus.tutorials]]
+  name = "Run a disputer"
+  url = "/tutorials/lotus/run-a-disputer"
+  parent = "Lotus"
+  weight = 111
+
+  [[menus.tutorials]]
+  name = "Backfilling Messages in Lotus"
+  url = "/tutorials/lotus/backfilling-messages-in-lotus"
+  parent = "Lotus"
+  weight = 121
+
+  [[menus.tutorials]]
+  name = "Remote lotus-wallet management"
+  url = "/tutorials/lotus/remote-lotus-wallet-management"
+  parent = "Lotus"
+  weight = 131
+
+  [[menus.tutorials]]
+  name = "Grafana dashboard for Lotus"
+  url = "/tutorials/lotus/grafana-dashboard-for-lotus"
+  parent = "Lotus"
+  weight = 141
+
+  [[menus.tutorials]]
+  name = "Using Ledger on a remote machine"
+  url = "/tutorials/lotus/using-ledger-on-a-remote-machine"
+  parent = "Lotus"
+  weight = 151
+
+[[menus.tutorials]]
+  name = "Storage Providers"
+  weight = 200
+
+  [[menus.tutorials]]
+  name = "Lotus Miner Setup"
+  url = "/tutorials/storage-providers/lotus-miner-setup"
+  parent = "Storage Providers"
+  weight = 201
+
+  [[menus.tutorials]]
+  name = "Add Seal Worker"
+  url = "/tutorials/storage-providers/add-seal-worker"
+  parent = "Storage Providers"
+  weight = 211
+  
+  [[menus.tutorials]]
+  name = "CUDA Setup"
+  url = "/tutorials/storage-providers/cuda-setup"
+  parent = "Storage Providers"
+  weight = 221
+
+  [[menus.tutorials]]
+  name = "SupraSeal C2 Setup"
+  url = "/tutorials/storage-providers/supraseal-c2-setup"
+  parent = "Storage Providers"
+  weight = 231
+
+  [[menus.tutorials]]
+  name = "SupraSeal PC2 Setup"
+  url = "/tutorials/storage-providers/supraseal-pc2-setup"
+  parent = "Storage Providers"
+  weight = 241
+
+  [[menus.tutorials]]
+  name = "Multisignature address as owner address"
+  url = "/tutorials/storage-providers/multisignature-address-as-owner-address"
+  parent = "Lotus"
+  weight = 251
 
 [[menus.reference]]
-  name = "Getting Started"
-  weight = 1
+  name = "Basics"
+  weight = 100
 
   [[menus.reference]]
   name = "Overview"
-  url = "/reference/getting-started/"
-  parent = "Getting Started"
-  weight = 1
+  url = "/reference/basics/overview"
+  parent = "Basics"
+  weight = 101
 
-
-[[menus.knowledge-base]]
-  name = "Getting Started"
-  weight = 1
-
-  [[menus.knowledge-base]]
-  name = "Overview"
-  url = "/knowledge-base/getting-started/"
-  parent = "Getting Started"
-  weight = 1
-
-
-[[menus.blog]]
-  name = "Getting Started"
-  weight = 1
-
-  [[menus.blog]]
-  name = "Overview"
-  url = "/blog/getting-started/"
-  parent = "Getting Started"
-  weight = 1
+  [[menus.reference]]
+  name = "API access"
+  url = "/reference/basics/api-access"
+  parent = "Basics"
+  weight = 111
 # ============================
