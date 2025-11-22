@@ -1,0 +1,3 @@
+[submodule "themes/grundlagen"]
+	path = themes/grundlagen
+	url = git@gitlab.com:johnnymatthews/grundlagen.git

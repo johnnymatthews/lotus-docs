@@ -1,3 +1,341 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+# Basic info.
+# -----------
+baseURL = "/"
+title = "Lotus Docs"
+theme = "grundlagen"
+languageCode = "en-us"
+# -----------
+
+
+
+# Output formats for search index.
+# --------------------------------
+[outputs]
+  home = ["HTML", "JSON"]
+
+[outputFormats.JSON]
+  mediaType = "application/json"
+  baseName = "index"
+  isPlainText = true
+# --------------------------------
+
+
+
+# Customizable parameters.
+# ------------------------
+[params]
+  description = "This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network!"
+  author = "FilOz"
+
+  # Code block features
+  [params.code_blocks]
+    copy_button = true  # Enable copy button on code blocks
+    border = true       # Show border around code blocks (default: true)
+
+  # Theme colors
+  [params.colors.light]
+    primary = "#0969da"           # Link color, buttons, highlights
+    text_primary = "#1c2128"      # Main text color
+    text_secondary = "#57606a"    # Secondary text (descriptions, meta)
+    bg_primary = "#ffffff"        # Main background
+    bg_secondary = "#f6f8fa"      # Sidebar, code blocks, alternate backgrounds
+    border = "#d1d9e0"            # Borders and dividers
+    code_bg = "#f6f8fa"           # Code block background
+    code_border = "#d1d9e0"       # Code block borders
+
+  [params.colors.dark]
+    primary = "#58a6ff"           # Link color, buttons, highlights
+    text_primary = "#c9d1d9"      # Main text color
+    text_secondary = "#8b949e"    # Secondary text (descriptions, meta)
+    bg_primary = "#0d1117"        # Main background
+    bg_secondary = "#161b22"      # Sidebar, code blocks, alternate backgrounds
+    border = "#30363d"            # Borders and dividers
+    code_bg = "#161b22"           # Code block background
+    code_border = "#30363d"       # Code block borders
+
+  # Social links
+  [params.social]
+    github = "https://example.com"
+    twitter = "https://example.com"
+    slack = "https://example.com"
+# ------------------------
+
+
+
+# Menus and navigation config.
+# ============================
+
+# Topbar nav menu.
+# ----------------
+[[menus.main]]
+  name = "Lotus"
+  url = "/lotus/"
+  weight = 2
+
+[[menus.main]]
+  name = "Storage Providers"
+  url = "/storage-providers/"
+  weight = 3
+
+[[menus.main]]
+  name = "Tutorials"
+  url = "/tutorials/"
+  weight = 4
+
+[[menus.main]]
+  name = "Reference"
+  url = "/reference/"
+  weight = 5
+
+[[menus.main]]
+  name = "Knowledge Base"
+  url = "/knowledge-base/"
+  weight = 6
+
+[[menus.main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 7
+# ----------------
+
+
+# Sidebar menus.
+# --------------
+[[menus.lotus]]
+  name = "Get Started"
+  weight = 100
+
+  [[menus.lotus]]
+  name = "What is Lotus"
+  url = "/lotus/get-started/what-is-lotus/"
+  parent = "Get Started"
+  weight = 101
+
+  [[menus.lotus]]
+  name = "Networks"
+  url = "/lotus/get-started/networks/"
+  parent = "Get Started"
+  weight = 110
+
+  [[menus.lotus]]
+  name = "Node Types"
+  url = "/lotus/get-started/node-types/"
+  parent = "Get Started"
+  weight = 120
+
+[[menus.lotus]]
+  name = "Setup"
+  weight = 200
+
+  [[menus.lotus]]
+  name = "Prerequisites"
+  url = "/lotus/setup/prerequisites/"
+  parent = "Setup"
+  weight = 201
+
+  [[menus.lotus]]
+  name = "Lotus on Linux"
+  url = "/lotus/setup/lotus-on-linux/"
+  parent = "Setup"
+  weight = 210
+
+  [[menus.lotus]]
+  name = "MacOS"
+  url = "/lotus/setup/macos/"
+  parent = "Setup"
+  weight = 220
+
+  [[menus.lotus]]
+  name = "Start Lotus"
+  url = "/lotus/setup/start-lotus/"
+  parent = "Setup"
+  weight = 230
+
+[[menus.lotus]]
+  name = "Manage"
+  weight = 300
+
+  [[menus.lotus]]
+  name = "Manage FIL"
+  url = "/lotus/manage/manage-fil/"
+  parent = "Manage"
+  weight = 301
+
+  [[menus.lotus]]
+  name = "Using Ledger"
+  url = "/lotus/manage/using-ledger/"
+  parent = "Manage"
+  weight = 311
+
+  [[menus.lotus]]
+  name = "Multisig"
+  url = "/lotus/manage/multisig/"
+  parent = "Manage"
+  weight = 321
+
+  [[menus.lotus]]
+  name = "Chain Management"
+  url = "/lotus/manage/chain-management/"
+  parent = "Manage"
+  weight = 331
+
+  [[menus.lotus]]
+  name = "Message Pool"
+  url = "/lotus/manage/message-pool/"
+  parent = "Manage"
+  weight = 341
+
+  [[menus.lotus]]
+  name = "Switch Networks"
+  url = "/lotus/manage/switch-networks/"
+  parent = "Manage"
+  weight = 351
+
+  [[menus.lotus]]
+  name = "Backup and Restore"
+  url = "/lotus/manage/backup-and-restore/"
+  parent = "Manage"
+  weight = 361
+
+  [[menus.lotus]]
+  name = "Upgrade"
+  url = "/lotus/manage/upgrade/"
+  parent = "Manage"
+  weight = 371
+
+  [[menus.lotus]]
+  name = "Lotus CLI"
+  url = "/lotus/manage/lotus-cli/"
+  parent = "Manage"
+  weight = 381
+
+  [[menus.lotus]]
+  name = "Lotus Slasher and Lotus Disputer"
+  url = "/lotus/manage/lotus-slasher-and-lotus-disputer/"
+  parent = "Manage"
+  weight = 383
+
+  [[menus.lotus]]
+  name = "Claim Extension"
+  url = "/lotus/manage/claim-extension/"
+  parent = "Manage"
+  weight = 385
+
+[[menus.lotus]]
+  name = "Advanced"
+  weight = 400
+
+  [[menus.lotus]]
+  name = "Advanced Configurations"
+  url = "/lotus/advanced-configurations/advanced-configurations/"
+  parent = "Advanced"
+  weight = 401
+
+  [[menus.lotus]]
+  name = "Lite Node"
+  url = "/lotus/advanced-configurations/lite-node/"
+  parent = "Advanced"
+  weight = 411
+
+  [[menus.lotus]]
+  name = "SplitStore"
+  url = "/lotus/advanced-configurations/splitstore/"
+  parent = "Advanced"
+  weight = 421
+
+  [[menus.lotus]]
+  name = "Ethereum RPC"
+  url = "/lotus/advanced-configurations/ethereum-rpc/"
+  parent = "Advanced"
+  weight = 431
+
+  [[menus.lotus]]
+  name = "Lotus Gateway"
+  url = "/lotus/advanced-configurations/lotus-gateway/"
+  parent = "Advanced"
+  weight = 441
+
+  [[menus.lotus]]
+  name = "Lotus Bootstrap Node"
+  url = "/lotus/advanced-configurations/lotus-bootstrap-node/"
+  parent = "Advanced"
+  weight = 451
+
+[[menus.lotus]]
+  name = "Developers"
+  weight = 500
+
+  [[menus.lotus]]
+  name = "Devnet - Local Network"
+  url = "/lotus/developers/devnet-local-network"
+  parent = "Developers"
+  weight = 501
+
+  [[menus.lotus]]
+  name = "Chain.love"
+  url = "/lotus/developers/chain-love"
+  parent = "Developers"
+  weight = 511
+
+  [[menus.lotus]]
+  name = "Contribute"
+  url = "/lotus/developers/contribute"
+  parent = "Developers"
+  weight = 521
+
+
+
+[[menus.storage-providers]]
+  name = "Getting Started"
+  weight = 1
+
+  [[menus.storage-providers]]
+  name = "Overview"
+  url = "/storage-providers/getting-started/"
+  parent = "Getting Started"
+  weight = 1
+
+
+[[menus.tutorials]]
+  name = "Getting Started"
+  weight = 1
+
+  [[menus.tutorials]]
+  name = "Overview"
+  url = "/tutorials/getting-started/"
+  parent = "Getting Started"
+  weight = 1
+
+
+[[menus.reference]]
+  name = "Getting Started"
+  weight = 1
+
+  [[menus.reference]]
+  name = "Overview"
+  url = "/reference/getting-started/"
+  parent = "Getting Started"
+  weight = 1
+
+
+[[menus.knowledge-base]]
+  name = "Getting Started"
+  weight = 1
+
+  [[menus.knowledge-base]]
+  name = "Overview"
+  url = "/knowledge-base/getting-started/"
+  parent = "Getting Started"
+  weight = 1
+
+
+[[menus.blog]]
+  name = "Getting Started"
+  weight = 1
+
+  [[menus.blog]]
+  name = "Overview"
+  url = "/blog/getting-started/"
+  parent = "Getting Started"
+  weight = 1
+# ============================
