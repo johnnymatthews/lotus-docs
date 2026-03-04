@@ -27,6 +27,10 @@ languageCode = "en-us"
   description = "This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network!"
   author = "FilOz"
 
+  [params.version]
+    lotus = "1.28.0"
+    curio = "2.3.1"
+
   # Code block features
   [params.code_blocks]
     copy_button = true  # Enable copy button on code blocks
