@@ -234,38 +234,38 @@ refLinksErrorLevel = "WARNING"
   weight = 400
 
   [[menus.lotus]]
-  name = "Advanced Configurations"
-  url = "/lotus/advanced-configurations/advanced-configurations/"
+  name = "Configure"
+  url = "/lotus/configure/defaults/"
   parent = "Advanced"
   weight = 401
 
   [[menus.lotus]]
   name = "Lite Node"
-  url = "/lotus/advanced-configurations/lite-node/"
+  url = "/lotus/configure/lite-node/"
   parent = "Advanced"
   weight = 411
 
   [[menus.lotus]]
   name = "SplitStore"
-  url = "/lotus/advanced-configurations/splitstore/"
+  url = "/lotus/configure/splitstore/"
   parent = "Advanced"
   weight = 421
 
   [[menus.lotus]]
   name = "Ethereum RPC"
-  url = "/lotus/advanced-configurations/ethereum-rpc/"
+  url = "/lotus/configure/ethereum-rpc/"
   parent = "Advanced"
   weight = 431
 
   [[menus.lotus]]
-  name = "Lotus Gateway"
-  url = "/lotus/advanced-configurations/lotus-gateway/"
+  name = "Gateway"
+  url = "/lotus/configure/gateway/"
   parent = "Advanced"
   weight = 441
 
   [[menus.lotus]]
-  name = "Lotus Bootstrap Node"
-  url = "/lotus/advanced-configurations/lotus-bootstrap-node/"
+  name = "Bootstrap Node"
+  url = "/lotus/configure/bootstrap/"
   parent = "Advanced"
   weight = 451
 
@@ -274,8 +274,8 @@ refLinksErrorLevel = "WARNING"
   weight = 500
 
   [[menus.lotus]]
-  name = "Devnet - Local Network"
-  url = "/lotus/developers/devnet-local-network"
+  name = "Local Network"
+  url = "/lotus/developers/local-network"
   parent = "Developers"
   weight = 501
 
