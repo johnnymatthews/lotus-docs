@@ -8,6 +8,10 @@ languageCode = "en-us"
 
 
 
+# TROUBLESHOOTING
+refLinksErrorLevel = "WARNING"
+
+
 # Output formats for search index.
 # --------------------------------
 [outputs]
@@ -138,8 +142,8 @@ languageCode = "en-us"
   weight = 201
 
   [[menus.lotus]]
-  name = "Lotus on Linux"
-  url = "/lotus/setup/lotus-on-linux/"
+  name = "Linux"
+  url = "/lotus/setup/linux/"
   parent = "Setup"
   weight = 210
 
