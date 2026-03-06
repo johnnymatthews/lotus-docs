@@ -299,31 +299,31 @@ refLinksErrorLevel = "WARNING"
 
   [[menus.storage-providers]]
   name = "Start here"
-  url = "/storage-providers/getting-started/start-here"
+  url = "/storage-providers/get-started/start-here"
   parent = "Getting Started"
   weight = 101
 
   [[menus.storage-providers]]
   name = "Tasks"
-  url = "/storage-providers/tasks/"
+  url = "/storage-providers/get-started/tasks"
   parent = "Getting Started"
   weight = 111
 
   [[menus.storage-providers]]
   name = "Economics"
-  url = "/storage-providers/economics/"
+  url = "/storage-providers/get-started/economics"
   parent = "Getting Started"
   weight = 121
 
   [[menus.storage-providers]]
   name = "Hardware requirements"
-  url = "/storage-providers/hardware-requirements/"
+  url = "/storage-providers/get-started/hardware-requirements"
   parent = "Getting Started"
   weight = 131
 
   [[menus.storage-providers]]
   name = "Architectures"
-  url = "/storage-providers/architectures/"
+  url = "/storage-providers/get-started/architectures"
   parent = "Getting Started"
   weight = 141
 
