@@ -1,16 +1,9 @@
 ---
 title: 'Using Ledger'
-description: "This guide will show you how to use Lotus with a Ledger hardware wallet.
-You can either use the Glif wallet or manually manage your funds using the Lotus node with Ledger integration."
-lead: "This guide will show you how to use Lotus with a Ledger hardware wallet.
-You can either use the Glif wallet or manually manage your funds using the Lotus node with Ledger integration."
+description: "This guide will show you how to use Lotus with a Ledger hardware wallet. You can either use the Glif wallet or manually manage your funds using the Lotus node with Ledger integration."
 draft: false
-menu:
-    lotus:
-        parent: "lotus-management"
 aliases:
     - /docs/set-up/manage-fil-with-ledger/
-weight: 410
 toc: true
 ---
 
